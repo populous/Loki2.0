@@ -1,3 +1,7 @@
 # Loki2.0
-Add new line
-Add new 2
+single thread 
+cpu only
+C++2B
+Orgami
+Core
+pattern
