@@ -9,7 +9,7 @@
 #include <iostream>
 #include <string>
 
-using namespace metaloki::origami;
+using namespace origami;
 
 // 검색 결과 [4] "Item, ItemList" 스타일의 ORIGAMI 요소들
 class document_element : public visitable_base<document_element> {
