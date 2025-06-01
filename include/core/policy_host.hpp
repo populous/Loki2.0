@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <metaloki/core/typelist.hpp>
+#include <core/typelist.hpp>
 #include <type_traits>
 #include <concepts>
 
