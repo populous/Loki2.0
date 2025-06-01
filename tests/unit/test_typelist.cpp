@@ -3,7 +3,7 @@
  * @brief Core TypeList 단위 테스트
  */
 
-#include <metaloki/core/typelist.hpp>
+#include <core/typelist.hpp>
 #include <string>
 #include <vector>
 
