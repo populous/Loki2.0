@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <metaloki/core/typelist.hpp>
+#include <core/typelist.hpp>
 #include <variant>
 #include <array>
 
