@@ -14,7 +14,7 @@
 #include <string>
 #include <concepts>
 
-namespace metaloki::patterns {
+namespace patterns {
     
     /**
      * @brief 생산 가능한 타입에 대한 개념
