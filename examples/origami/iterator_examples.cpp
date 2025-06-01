@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 
-using namespace metaloki::origami;
+using namespace origami;
 
 // 검색 결과 [7] "Book" 클래스 스타일
 class document {
