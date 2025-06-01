@@ -181,3 +181,49 @@ namespace metaloki::core {
         };
     }
 }
+
+
+/**
+ * @brief 검색 결과 [4] "exponential combinations" 성능 특화 버전
+ */
+
+namespace metaloki::core::policies {
+    
+    /**
+     * @brief 성능 특화 정책들
+     */
+    struct no_validation_policy {
+        static constexpr bool enable_validation = false;
+        
+        template<typename Condition, typename Message>
+        static constexpr void assert_that(Condition&&, Message&&) noexcept {
+            // No-op for performance
+        }
+    };
+    
+    struct no_logging_policy {
+        enum class level { debug, info, warning, error };
+        
+        template<level Level, typename Message>
+        static constexpr void log(Message&&) noexcept {
+            // No-op for performance
+        }
+    };
+    
+    /**
+     * @brief 검색 결과 [4] "compile time" 최적화된 조합들
+     */
+    template<typename... Policies>
+    using fast_policy_host = policy_host<
+        single_thread_policy,
+        cpu_memory_policy,
+        Policies...
+    >;
+    
+    // 사전 정의된 성능 조합들
+    using minimal_host = fast_policy_host<no_validation_policy, no_logging_policy>;
+    using debug_host = fast_policy_host<validation_policy, logging_policy>;
+    using release_host = fast_policy_host<no_validation_policy, no_logging_policy>;
+}
+
+
