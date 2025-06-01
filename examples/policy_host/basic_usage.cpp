@@ -9,8 +9,8 @@
 #include <vector>
 #include <chrono>
 
-using namespace metaloki::core;
-using namespace metaloki::core::policies;
+using namespace core;
+using namespace core::policies;
 
 /**
  * @brief 검색 결과 [2] "real-world scenario" - Factory Pattern with Policies
