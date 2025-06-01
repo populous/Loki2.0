@@ -3,12 +3,12 @@
  * @brief 검색 결과 [4] HelloWorld 스타일 Policy Host 활용
  */
 
-#include <metaloki/core/policy_host.hpp>
-#include <metaloki/core/policy_concepts.hpp>
+#include <core/policy_host.hpp>
+#include <core/policy_concepts.hpp>
 #include <iostream>
 
-using namespace metaloki::core;
-using namespace metaloki::core::policies;
+using namespace core;
+using namespace core::policies;
 
 /**
  * @brief 검색 결과 [1] "Host classes" 실제 구현 예시
