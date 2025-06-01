@@ -3,8 +3,8 @@
  * @brief 검색 결과 [1] 벤치마크 개선 및 성능 측정
  */
 
-#include <metaloki/core/typelist.hpp>
-#include <metaloki/core/typelist_performance.hpp>
+#include <core/typelist.hpp>
+#include <core/typelist_performance.hpp>
 #include <chrono>
 #include <iostream>
 #include <string>
