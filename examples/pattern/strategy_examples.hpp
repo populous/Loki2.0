@@ -138,3 +138,131 @@ namespace metaloki::patterns::algorithms {
         }
     };
 }
+
+/**
+ * @file examples/patterns/strategy_examples.cpp
+ * @brief 검색 결과 [2] "three concrete strategies" 확장 예제
+ */
+
+#include <metaloki/patterns/strategy.hpp>
+#include <metaloki/patterns/strategy_algorithms.hpp>
+#include <metaloki/patterns/policy_strategies.hpp>
+#include <iostream>
+#include <string>
+
+using namespace metaloki::patterns;
+using namespace metaloki::patterns::algorithms;
+using namespace metaloki::patterns::policies;
+
+void basic_strategy_example() {
+    std::cout << "\n=== Basic Strategy Example ===\n";
+    
+    // 검색 결과 [2] "Context k; k.setStrategy" 스타일
+    strategy_context<addition_strategy, multiplication_strategy, power_strategy> context;
+    
+    // 검색 결과 [1] "client passes the desired strategy"
+    context.set_strategy(addition_strategy{});
+    auto result1 = context.execute(5, 3);
+    std::cout << "Addition result: " << result1 << std::endl;
+    
+    context.set_strategy(multiplication_strategy{});
+    auto result2 = context.execute(5, 3);
+    std::cout << "Multiplication result: " << result2 << std::endl;
+    
+    context.set_strategy(power_strategy{});
+    auto result3 = context.execute(5.0, 3.0);
+    std::cout << "Power result: " << result3 << std::endl;
+}
+
+void compile_time_strategy_example() {
+    std::cout << "\n=== Compile-time Strategy Example ===\n";
+    
+    // 검색 결과 [2] "Policy-Based Design" 구현
+    math_calculator<addition_strategy> add_calc;
+    auto add_result = add_calc.calculate(10, 5);
+    std::cout << "Compile-time addition: " << add_result << std::endl;
+    
+    math_calculator<multiplication_strategy> mul_calc;
+    auto mul_result = mul_calc.calculate(10, 5);
+    std::cout << "Compile-time multiplication: " << mul_result << std::endl;
+    
+    // 로깅 테스트
+    add_calc.log_operation("Testing addition strategy");
+    mul_calc.log_operation("Testing multiplication strategy");
+}
+
+void hybrid_strategy_example() {
+    std::cout << "\n=== Hybrid Strategy Example ===\n";
+    
+    // 검색 결과 [3] "runtime and compile-time" 조합
+    hybrid_strategy_context<double, addition_strategy, multiplication_strategy> hybrid;
+    
+    // 런타임 사용
+    hybrid.set_runtime_strategy(addition_strategy{});
+    auto runtime_result = hybrid.execute_runtime(7.5, 2.5);
+    std::cout << "Runtime addition: " << runtime_result << std::endl;
+    
+    // 컴파일 타임 사용
+    auto compile_result = hybrid.execute_compile_time<multiplication_strategy>(7.5, 2.5);
+    std::cout << "Compile-time multiplication: " << compile_result << std::endl;
+}
+
+void policy_container_example() {
+    std::cout << "\n=== Policy Container Example ===\n";
+    
+    // 검색 결과 [2] "default values for the policy parameters"
+    policy_container<int> standard_container;
+    standard_container.push_back(1);
+    standard_container.push_back(2);
+    standard_container.log_allocator_info("Standard allocator used");
+    
+    // 풀 할당자 사용
+    policy_container<int, pool_allocator_policy> pool_container;
+    pool_container.push_back(10);
+    pool_container.push_back(20);
+    pool_container.log_allocator_info("Pool allocator used");
+    
+    // 해시 테스트
+    auto hash1 = standard_container.hash_element(42);
+    auto hash2 = pool_container.hash_element(42);
+    std::cout << "Hash values: " << hash1 << ", " << hash2 << std::endl;
+}
+
+void dynamic_calculator_example() {
+    std::cout << "\n=== Dynamic Calculator Example ===\n";
+    
+    // 검색 결과 [1] "massive conditional statement" 해결
+    dynamic_calculator calc;
+    
+    calc.set_operation(operation_type::ADD);
+    auto add_result = calc.calculate(15, 25);
+    calc.log_operation("Dynamic addition operation");
+    std::cout << "Dynamic addition: " << add_result << std::endl;
+    
+    calc.set_operation(operation_type::MULTIPLY);
+    auto mul_result = calc.calculate(6, 7);
+    calc.log_operation("Dynamic multiplication operation");
+    std::cout << "Dynamic multiplication: " << mul_result << std::endl;
+}
+
+int main() {
+    try {
+        std::cout << "===== Strategy Pattern Examples =====\n";
+        
+        basic_strategy_example();
+        compile_time_strategy_example();
+        hybrid_strategy_example();
+        policy_container_example();
+        dynamic_calculator_example();
+        
+        std::cout << "\n✅ All Strategy examples completed successfully!" << std::endl;
+        
+    } catch (const std::exception& e) {
+        std::cerr << "❌ Error: " << e.what() << std::endl;
+        return 1;
+    }
+    
+    return 0;
+}
+
+
