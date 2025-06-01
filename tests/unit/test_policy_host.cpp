@@ -11,8 +11,8 @@
 #include <string>
 #include <vector>
 
-using namespace metaloki::core;
-using namespace metaloki::core::policies;
+using namespace core;
+using namespace core::policies;
 
 /**
  * @brief 검색 결과 [3] "mock objects" - 테스트용 Mock Policies
