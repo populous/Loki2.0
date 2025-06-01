@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-using namespace metaloki::core;
+using namespace core;
 
 // 기본 기능 테스트
 void test_basic_functionality() {
