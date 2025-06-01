@@ -9,7 +9,7 @@
 #include <iostream>
 #include <string>
 
-using namespace metaloki::core;
+using namespace core;
 
 // 테스트용 타입들
 struct A {}; struct B {}; struct C {}; struct D {}; struct E {};
