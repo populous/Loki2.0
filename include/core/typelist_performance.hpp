@@ -3,7 +3,7 @@
  * @brief 검색 결과 [4] Type traits 기반 성능 최적화
  */
 
-namespace metaloki::core::performance {
+namespace core::performance {
     
     /**
      * @brief 검색 결과 [4] "if constexpr" 활용 최적화
