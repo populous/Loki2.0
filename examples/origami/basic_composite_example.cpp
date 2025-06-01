@@ -9,7 +9,7 @@
 #include <iostream>
 #include <string>
 
-using namespace metaloki::origami;
+using namespace origami;
 
 // 기본 Composite 패턴 예제
 void basic_composite_example() {
