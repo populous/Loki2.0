@@ -20,3 +20,5 @@ cmake -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON ../
 make -j$(nproc)
 sudo make install
 
+Discord
+https://discord.gg/yYWPhgu6
